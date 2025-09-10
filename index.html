@@ -2,46 +2,98 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cartita 💌</title>
+    <!-- Fuente romántica -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
     <style>
         body {
+            background-color: #ffe6f0;
+            font-family: 'Great Vibes', cursive;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
             margin: 0;
-            padding: 0;
-            font-family: "Comic Sans MS", cursive, sans-serif;
-            background: #ffe6f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             height: 100vh;
         }
 
         .carta {
-            width: 90%;
-            max-width: 400px;
+            width: 350px;
             height: 250px;
-            background: white;
-            border: 3px solid pink;
+            background: #fff;
+            border: 4px solid #ff99cc;
             border-radius: 15px;
-            position: relative;
+            margin: 100px auto;
+            box-shadow: 0px 0px 25px pink;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
-            box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
-            text-align: center;
+            position: relative;
+            z-index: 2;
+            transition: transform 0.3s ease;
         }
 
-        .carta::before {
-            content: "❤️";
-            font-size: 4em;
+        .carta:hover {
+            transform: scale(1.05);
+        }
+
+        .corazon {
+            font-size: 6em;
+            color: red;
+        }
+
+        /* Animación flotante */
+        @keyframes flotar {
+            0% { transform: translateY(0) scale(1); opacity: 0; }
+            10% { opacity: 1; }
+            100% { transform: translateY(-120vh) scale(1.2); opacity: 0; }
+        }
+
+        .flotante {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            bottom: -100px;
+            animation: flotar 10s linear forwards;
+            z-index: 1;
+        }
+
+        /* Ajuste responsivo */
+        @media (max-width: 600px) {
+            .carta {
+                width: 280px;
+                height: 200px;
+            }
+            .corazon {
+                font-size: 5em;
+            }
         }
     </style>
 </head>
 <body>
     <a href="pagina.html">
-        <div class="carta"></div>
+        <div class="carta">
+            <div class="corazon">❤️</div>
+        </div>
     </a>
+
+    <script>
+        const corazones = ["❤️","💕","💖","💘","💝","💓","💞"];
+
+        function crearCorazon() {
+            if (document.querySelectorAll(".flotante").length > 15) return;
+
+            const heart = document.createElement("div");
+            heart.classList.add("flotante");
+            heart.innerText = corazones[Math.floor(Math.random() * corazones.length)];
+            heart.style.fontSize = (Math.random() * 2 + 1.5) + "em";
+            heart.style.left = Math.random() * 90 + "%";
+            heart.style.animationDuration = (Math.random() * 5 + 6) + "s";
+            document.body.appendChild(heart);
+
+            heart.addEventListener("animationend", () => heart.remove());
+        }
+
+        setInterval(crearCorazon, 1200);
+    </script>
 </body>
 </html>
