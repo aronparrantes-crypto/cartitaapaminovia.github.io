@@ -2,94 +2,46 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cartita 💌</title>
     <style>
         body {
-            background-color: #ffe6f0;
+            margin: 0;
+            padding: 0;
+            font-family: "Comic Sans MS", cursive, sans-serif;
+            background: #ffe6f0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
-            font-family: "Comic Sans MS", cursive;
         }
 
         .carta {
-            width: 400px;
-            height: 280px;
-            background: #fff;
-            border-radius: 20px;
-            box-shadow: 0 0 30px pink;
+            width: 90%;
+            max-width: 400px;
+            height: 250px;
+            background: white;
+            border: 3px solid pink;
+            border-radius: 15px;
             position: relative;
             cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .carta:hover {
-            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+            text-align: center;
         }
 
         .carta::before {
-            content: "💖💖💖";
-            position: absolute;
-            top: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 2em;
-        }
-
-        .carta::after {
-            content: "💖💖💖";
-            position: absolute;
-            bottom: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 2em;
-        }
-
-        .corazon {
-            width: 100px;
-            height: 90px;
-            background: red;
+            content: "❤️";
+            font-size: 4em;
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%) rotate(-45deg);
-            animation: latir 1s infinite;
-        }
-
-        .corazon::before,
-        .corazon::after {
-            content: "";
-            width: 100px;
-            height: 100px;
-            background: red;
-            border-radius: 50%;
-            position: absolute;
-        }
-
-        .corazon::before {
-            top: -50px;
-            left: 0;
-        }
-
-        .corazon::after {
-            left: 50px;
-            top: 0;
-        }
-
-        @keyframes latir {
-            0% { transform: translate(-50%, -50%) rotate(-45deg) scale(1); }
-            50% { transform: translate(-50%, -50%) rotate(-45deg) scale(1.2); }
-            100% { transform: translate(-50%, -50%) rotate(-45deg) scale(1); }
+            transform: translate(-50%, -50%);
         }
     </style>
 </head>
 <body>
     <a href="pagina.html">
-        <div class="carta">
-            <div class="corazon"></div>
-        </div>
+        <div class="carta"></div>
     </a>
 </body>
 </html>
