@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Para mi Novia 💖</title>
+    <!-- Fuente romántica -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #ffe6f0;
+            font-family: 'Great Vibes', cursive;
+            text-align: center;
+            color: #75264d;
+            overflow: hidden;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 4em; /* más grande */
+            margin-top: 20px;
+            text-shadow: 3px 3px #fff;
+            position: relative;
+            z-index: 2;
+        }
+
+        p {
+            font-size: 2em; /* más grande el texto */
+            margin: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .caja {
+            background: #fff0f5;
+            border: 3px solid #8a1750;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 30px auto;
+            width: 60%;
+            box-shadow: 0 0 15px #ffb6c1;
+            position: relative;
+            z-index: 2;
+        }
+
+        img {
+            width: 150px;
+            margin: 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .corazon {
+            font-size: 3em;
+            color: red;
+            position: relative;
+            z-index: 2;
+        }
+
+        .firma {
+            margin-top: 30px;
+            font-style: italic;
+            font-size: 2em; /* más grande */
+            position: relative;
+            z-index: 2;
+        }
+
+        .boton {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 30px;
+            background: #ff66b2;
+            color: white;
+            font-size: 1.8em; /* más grande */
+            text-decoration: none;
+            border-radius: 25px;
+            transition: 0.3s;
+            position: relative;
+            z-index: 2;
+        }
+
+        .boton:hover {
+            background: #ff3385;
+        }
+
+        /* Animación flotante */
+        @keyframes flotar {
+            0% { transform: translateY(0) scale(1); opacity: 0; }
+            10% { opacity: 1; }
+            100% { transform: translateY(-120vh) scale(1.2); opacity: 0; }
+        }
+
+        .flotante {
+            position: absolute;
+            bottom: -100px;
+            animation: flotar 10s linear forwards;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <h1>💖💕🐱 Para mi Yanicita linda 🐱💕💖</h1>
+    <img src="imagenes/kitty.png" alt="Foto bonita" width="200">
+
+    <div class="caja">
+        <p>Hola amorcito, esta es mi primera página </p>
+        <p>Y qué mejor que dedicártela a ti 💕</p>
+        <p>Porque eres la persona más especial en mi vida,</p>
+        <p>y cada momento contigo es hermoso 🌸</p>
+        <p class="corazon">❤️ Te amo con todo mi corazón ❤️</p>
+    </div>
+
+    <a class="boton" href="foto.html">boton nada sospechoso 😾</a>
+
+    <p class="firma">Con todo mi amor, tu Cuchurrumino💕</p>
+
+    <script>
+        const corazones = ["❤️","💕","💖","💘","💝","💓","💞"];
+        const fotos = ["imagenes/foto1.jpg","imagenes/foto2.jpg","imagenes/foto3.jpg"];
+
+        function crearElemento() {
+            if (document.querySelectorAll(".flotante").length > 15) return;
+
+            if (Math.random() < 0.5) {
+                const heart = document.createElement("div");
+                heart.classList.add("flotante");
+                heart.innerText = corazones[Math.floor(Math.random() * corazones.length)];
+                heart.style.fontSize = (Math.random() * 3 + 2) + "em";
+                heart.style.left = Math.random() * 90 + "%";
+                heart.style.animationDuration = (Math.random() * 5 + 8) + "s";
+                document.body.appendChild(heart);
+                heart.addEventListener("animationend", () => heart.remove());
+            } else {
+                const img = document.createElement("img");
+                img.classList.add("flotante");
+                img.src = fotos[Math.floor(Math.random() * fotos.length)];
+                img.style.width = (Math.random() * 120 + 80) + "px";
+                img.style.borderRadius = "15px";
+                img.style.boxShadow = "0 0 10px pink";
+                img.style.left = Math.random() * 90 + "%";
+                img.style.animationDuration = (Math.random() * 5 + 8) + "s";
+                document.body.appendChild(img);
+                img.addEventListener("animationend", () => img.remove());
+            }
+        }
+
+        let intervalo = setInterval(crearElemento, 1500);
+        document.addEventListener("visibilitychange", () => {
+            if (document.hidden) {
+                clearInterval(intervalo); 
+            } else {
+                intervalo = setInterval(crearElemento, 1500);
+            }
+        });
+    </script>
+</body>
+</html>
